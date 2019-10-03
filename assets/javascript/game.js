@@ -13,7 +13,9 @@ var choice = document.querySelector('#start');
 var guess = document.querySelector('#wrong');
 var show = document.querySelector('#cate');
 var arrGuess = document.querySelector('#guess');
-var key, lowerCaseElement, win, lose, again;
+var wins = document.querySelector('.win');
+var lost = document.querySelector('.lost');
+var key, lowerCaseElement, win = 0, lose = 0, again;
 
 function chooseRandom() {
     var rand = Math.floor(Math.random() * 10);
@@ -28,9 +30,10 @@ function chooseRandom() {
 function game() {
     var category = chooseRandom();
     var element, elementHolder = [], lettersGuessed = [];
-    var done, key;
+    var done, key, round = 9;
 
-
+    wins.textContent = "Wins: " + win;
+    lost.textContent = "Losses: " + lose;
     element = category[Math.floor(Math.random() * 10)];
 
     for (var i = 0; i < element.length; i++) {
@@ -44,6 +47,7 @@ function game() {
     lowerCaseElement = element.toLowerCase();
     box.onkeyup = function (event) {
         key = event.key;
+
         if (category === disney) {
             choice.textContent = "I'm thinking of a Disney Movie";
         } else if (category === games) {
@@ -51,6 +55,7 @@ function game() {
         } else {
             choice.textContent = "I'm thinking of a Pixar Movie";
         }
+
         if (lowerCaseElement.includes(key)) {
             for (var j = 0; j < element.length; j++) {
                 if (key === lowerCaseElement[j]) {
@@ -60,15 +65,25 @@ function game() {
         } else {
             if (!lettersGuessed.includes(key) && alphabet.includes(key) && elementHolder.includes("_")) {
                 lettersGuessed.push(key);
+                if (lettersGuessed.length >= round) {
+                    choice.textContent = "Sorry! try again, press any key";
+                    game();
+                }
             }
         }
 
-        if (!elementHolder.includes("_")) {
+        if (!elementHolder.includes("_") || lettersGuessed.length >= round) {
             done = check(element, elementHolder);
             if (done) {
-                choice.textContent = "Congrats!! you Win!! ^^ ";
+                choice.textContent = "Congrats!! you Win!! ^^, press any key";
+                win++;
+                wins.textContent = "Wins: " + wins;
+                game();
             } else {
-                choice.textContent = "Sorry! try again";
+                choice.textContent = "Sorry! try again, press any key";
+                lose++
+                lost.textContent = "Losses: " + lose;
+                game();
             }
         }
 
