@@ -4,4 +4,19 @@
 }
 .box {
     padding: 10px;
+    float: left;
+}
+
+.imageBox {
+    height: 300px;
+    width: 300px;
+    float: left;
+    background-color: aqua;
+}
+
+.image{
+    height: 280px;
+    width: 280px;
+    margin-top: 10px;
+    margin-left: 10px;
 }

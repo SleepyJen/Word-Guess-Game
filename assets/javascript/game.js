@@ -5,6 +5,9 @@ var games = ["Borderlands", "Kingdom Hearts", "Final Fantasy", "Call of Duty",
     "Beatsaber", "Smash Bros", "CS go", "League of Legends", "TFT", "World of Warcraft"];
 var pixar = ["Cars", "Toy Story", "Coco", "Monsters Inc", "Incredibles",
     "Inside-Out", "Finding Nemo", "Brave", "Up", "Ratatoulli"];
+var images = ["./assets/images/1.png", "./assets/images/2.png", "./assets/images/3.png", "./assets/images/3.png",
+    "./assets/images/4.png", "./assets/images/5.png", "./assets/images/6.png", "./assets/images/7.png",
+    "./assets/images/8.png", "./assets/images/9.png", "./assets/images/10.png"]; //had to rush a bit
 var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "k", "l", "m", "n",
     "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
@@ -15,6 +18,7 @@ var show = document.querySelector('#cate');
 var arrGuess = document.querySelector('#guess');
 var wins = document.querySelector('.win');
 var lost = document.querySelector('.lost');
+var image = document.querySelector('.image');
 var key, lowerCaseElement, win = 0, lose = 0, again;
 
 function chooseRandom() {
@@ -30,7 +34,7 @@ function chooseRandom() {
 function game() {
     var category = chooseRandom();
     var element, elementHolder = [], lettersGuessed = [];
-    var done, key, round = 9;
+    var done, key, round = 9, count = 0;
 
     wins.textContent = "Wins: " + win;
     lost.textContent = "Losses: " + lose;
@@ -65,6 +69,8 @@ function game() {
         } else {
             if (!lettersGuessed.includes(key) && alphabet.includes(key) && elementHolder.includes("_")) {
                 lettersGuessed.push(key);
+                image.src = images[count];
+                count++;
                 if (lettersGuessed.length >= round) {
                     choice.textContent = "Sorry! try again, press any key";
                     game();
