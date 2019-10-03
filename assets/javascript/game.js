@@ -13,7 +13,7 @@ var choice = document.querySelector('#start');
 var guess = document.querySelector('#wrong');
 var show = document.querySelector('#cate');
 var arrGuess = document.querySelector('#guess');
-var key, lowerCaseElement, win, lose;
+var key, lowerCaseElement, win, lose, again;
 
 function chooseRandom() {
     var rand = Math.floor(Math.random() * 10);
@@ -29,13 +29,7 @@ function game() {
     var category = chooseRandom();
     var element, elementHolder = [], lettersGuessed = [];
     var done, key;
-    if (category === disney) {
-        choice.textContent = "I'm thinking of a Disney Movie";
-    } else if (category === games) {
-        choice.textContent = "I'm thinking of a popular Game";
-    } else {
-        choice.textContent = "I'm thinking of a Pixar Movie";
-    }
+
 
     element = category[Math.floor(Math.random() * 10)];
 
@@ -50,29 +44,37 @@ function game() {
     lowerCaseElement = element.toLowerCase();
     box.onkeyup = function (event) {
         key = event.key;
-
-        for (var j = 0; j < element.length; j++) {
-            if (key === lowerCaseElement[j]) {
-                elementHolder[j] = element[j];
+        if (category === disney) {
+            choice.textContent = "I'm thinking of a Disney Movie";
+        } else if (category === games) {
+            choice.textContent = "I'm thinking of a popular Game";
+        } else {
+            choice.textContent = "I'm thinking of a Pixar Movie";
+        }
+        if (lowerCaseElement.includes(key)) {
+            for (var j = 0; j < element.length; j++) {
+                if (key === lowerCaseElement[j]) {
+                    elementHolder[j] = element[j];
+                }
+            }
+        } else {
+            if (!lettersGuessed.includes(key) && alphabet.includes(key) && elementHolder.includes("_")) {
+                lettersGuessed.push(key);
             }
         }
-        if (!lettersGuessed.includes(key) && alphabet.includes(key)) {
-            lettersGuessed.push(key);
-        }
-
 
         if (!elementHolder.includes("_")) {
             done = check(element, elementHolder);
             if (done) {
-                //change win game.
+                choice.textContent = "Congrats!! you Win!! ^^ ";
+            } else {
+                choice.textContent = "Sorry! try again";
             }
         }
 
         show.textContent = elementHolder.join(' ');
         arrGuess.textContent = lettersGuessed.join(' ');
     };
-
-    console.log(key);
 
 }
 
@@ -88,9 +90,6 @@ function check(string, holder) {
     return match;
 }
 
-function endGame() {
-
-}
 
 
 game();
