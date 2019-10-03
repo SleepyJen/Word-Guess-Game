@@ -11,7 +11,7 @@ var box = document.querySelector('#body');
 var choice = document.querySelector('#start');
 var guess = document.querySelector('#wrong');
 var show = document.querySelector('#cate');
-var key;
+var key, lowerCaseElement;
 
 function chooseRandom() {
     var rand = Math.floor(Math.random() * 10);
@@ -45,18 +45,37 @@ function game() {
         }
     }
 
+    lowerCaseElement = element.toLowerCase();
     box.onkeyup = function (event) {
         key = event.key;
+
         for (var j = 0; j < element.length; j++) {
-            if (key === element[j]) {
+            if (key === lowerCaseElement[j]) {
                 elementHolder[j] = element[j];
             }
         }
-        show.textContent = elementHolder.join(" ");
+        if (!elementHolder.includes("_")) {
+            check(element, elementHolder);
+
+        }
+
+        show.textContent = elementHolder.join(' ');
     };
 
     console.log(key);
 
 }
+
+function check(arr, holder) {
+    var match = false;
+    for (var i = 0; i < holder.length; i++) {
+        if (holder[i] != arr[i]) {
+            match = false;
+        }
+        match = true;
+    }
+    return match;
+}
+
 
 game();
