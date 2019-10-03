@@ -5,13 +5,15 @@ var games = ["Borderlands", "Kingdom Hearts", "Final Fantasy", "Call of Duty",
     "Beatsaber", "Smash Bros", "CS go", "League of Legends", "TFT", "World of Warcraft"];
 var pixar = ["Cars", "Toy Story", "Coco", "Monsters Inc", "Incredibles",
     "Inside-Out", "Finding Nemo", "Brave", "Up", "Ratatoulli"];
-var alphabet = ["a", "b", "c", "d"];
+var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "k", "l", "m", "n",
+    "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
 var box = document.querySelector('#body');
 var choice = document.querySelector('#start');
 var guess = document.querySelector('#wrong');
 var show = document.querySelector('#cate');
-var key, lowerCaseElement;
+var arrGuess = document.querySelector('#guess');
+var key, lowerCaseElement, win, lose;
 
 function chooseRandom() {
     var rand = Math.floor(Math.random() * 10);
@@ -25,7 +27,7 @@ function chooseRandom() {
 
 function game() {
     var category = chooseRandom();
-    var element, elementHolder = [];
+    var element, elementHolder = [], lettersGuessed = [];
     var done, key;
     if (category === disney) {
         choice.textContent = "I'm thinking of a Disney Movie";
@@ -54,27 +56,40 @@ function game() {
                 elementHolder[j] = element[j];
             }
         }
-        if (!elementHolder.includes("_")) {
-            check(element, elementHolder);
+        if (!lettersGuessed.includes(key) && alphabet.includes(key)) {
+            lettersGuessed.push(key);
+        }
 
+
+        if (!elementHolder.includes("_")) {
+            done = check(element, elementHolder);
+            if (done) {
+                //change win game.
+            }
         }
 
         show.textContent = elementHolder.join(' ');
+        arrGuess.textContent = lettersGuessed.join(' ');
     };
 
     console.log(key);
 
 }
 
-function check(arr, holder) {
+function check(string, holder) {
     var match = false;
-    for (var i = 0; i < holder.length; i++) {
-        if (holder[i] != arr[i]) {
+    for (var i = 0; i < string.length; i++) {
+        if (holder[i] != string[i]) {
             match = false;
+            break;
         }
         match = true;
     }
     return match;
+}
+
+function endGame() {
+
 }
 
 
