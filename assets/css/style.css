@@ -2,13 +2,18 @@
     height: 200px;
     width: 100%;
 }
+
+header{
+    margin-top: 10px;
+    color: aliceblue;
+}
 .box {
     padding: 10px;
     float: left;
     color: aliceblue;
-    background-color: black;
+    background-color: rgb(36, 34, 34);
     height: 260px;
-    width: 250px;
+    width: 290px;
     margin-top: 10px;
 }
 body{
@@ -40,7 +45,7 @@ body{
 
 #start{
     text-align: center;
-    font-size: 30px;
+    font-size: 50px;
 }
 
 #cate, #wrong,
@@ -48,5 +53,5 @@ body{
 .lost{
     text-align: center;
     margin-top: 10px;
-    font-size: 20px;
+    font-size: 30px;
 }
