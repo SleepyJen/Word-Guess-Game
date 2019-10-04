@@ -1,17 +1,24 @@
-.title{
-    font-weight: bold;
-    font-size: 25px;
+#banner{
+    height: 200px;
+    width: 100%;
 }
 .box {
     padding: 10px;
     float: left;
-}
+    color: aliceblue;
 
+}
+body{
+    position: relative;
+    background: url("/assets/images/nastyaaroma190200101.jpg");
+    background-size: cover;
+    background-position: 0% 35%;
+    background-repeat: no-repeat;
+}
 .imageBox {
     height: 300px;
     width: 300px;
     float: left;
-    background-color: aqua;
 }
 
 .image{
@@ -19,4 +26,11 @@
     width: 280px;
     margin-top: 10px;
     margin-left: 10px;
+}
+.gameCenter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 12%;
+    margin-right: 20px;
 }

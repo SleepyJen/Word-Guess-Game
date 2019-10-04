@@ -72,7 +72,7 @@ function game() {
                 image.src = images[count];
                 count++;
                 if (lettersGuessed.length >= round) {
-                    choice.textContent = "Sorry! try again, press any key";
+                    choice.textContent = "Sorry! try again, press any key to play again";
                     game();
                 }
             }
@@ -86,7 +86,7 @@ function game() {
                 wins.textContent = "Wins: " + wins;
                 game();
             } else {
-                choice.textContent = "Sorry! try again, press any key";
+                choice.textContent = "Sorry! try again, press any key, the Answer was " + element;
                 lose++
                 lost.textContent = "Losses: " + lose;
                 game();
