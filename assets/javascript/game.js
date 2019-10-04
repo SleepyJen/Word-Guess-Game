@@ -35,6 +35,7 @@ function game() {
     var category = chooseRandom();
     var element, elementHolder = [], lettersGuessed = [];
     var done, key, round = 9, count = 0;
+    image.src = "./assets/images/0.png";
 
     wins.textContent = "Wins: " + win;
     lost.textContent = "Losses: " + lose;

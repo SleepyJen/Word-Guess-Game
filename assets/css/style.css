@@ -6,7 +6,10 @@
     padding: 10px;
     float: left;
     color: aliceblue;
-
+    background-color: black;
+    height: 260px;
+    width: 250px;
+    margin-top: 10px;
 }
 body{
     position: relative;
@@ -16,8 +19,8 @@ body{
     background-repeat: no-repeat;
 }
 .imageBox {
-    height: 300px;
-    width: 300px;
+    height: 290px;
+    width: 290px;
     float: left;
 }
 
@@ -33,4 +36,17 @@ body{
     align-items: center;
     margin-top: 12%;
     margin-right: 20px;
+}
+
+#start{
+    text-align: center;
+    font-size: 30px;
+}
+
+#cate, #wrong,
+#guess, .win, 
+.lost{
+    text-align: center;
+    margin-top: 10px;
+    font-size: 20px;
 }
