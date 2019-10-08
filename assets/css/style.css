@@ -18,7 +18,7 @@ header{
 }
 body{
     position: relative;
-    background: url("/assets/images/nastyaaroma190200101.jpg");
+    background: url("../../assets/images/nastyaaroma190200101.jpg");
     background-size: cover;
     background-position: 0% 35%;
     background-repeat: no-repeat;
